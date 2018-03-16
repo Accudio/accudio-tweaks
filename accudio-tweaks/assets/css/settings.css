@@ -1,0 +1,16 @@
+.accudio_tweaks_csp {
+	display: block;
+}
+.accudio_tweaks_csp input {
+	display: inline-block;
+	width: 250px;
+}
+
+#accudio_tweaks_security_frame_whitelist {
+	display: none;
+	width: 250px;
+}
+
+.accudio_tweaks_danger {
+	color: #f33 !important;
+}
