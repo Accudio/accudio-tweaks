@@ -46,8 +46,8 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Installation
 
-1. Download the latest release zip file: ```wget https://github.com/Accudio/accudio-tweaks/releases/download/v1.0.0/accudio-tweaks-v1.0.0.zip```
-2. Extract the zip in the /wp-content/plugins/ directory: ```unzip accudio-tweaks-v1.0.0.zip```.
+1. Download the latest release zip file: ```wget https://github.com/Accudio/accudio-tweaks/releases/download/v1.1.0/accudio-tweaks-v1.1.0.zip```
+2. Extract the zip in the /wp-content/plugins/ directory: ```unzip accudio-tweaks-v1.1.0.zip```.
 3. Ensure ```plugins/``` includes the folder ```accudio-tweaks```.
 4. Log in to Wordpress administration page:
 	1. Go to 'Plugins';
