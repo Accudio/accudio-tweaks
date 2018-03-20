@@ -2,19 +2,9 @@
 
 /**
  * @link				https://accudio.com/development
- * @since				1.0.0
+ * @since				1.1.0
  * @package				Accudio_Tweaks
  * @subpackage			Accudio_Tweaks/Settings
- *
- * @wordpress-plugin
- * Plugin Name:			Accudio Tweaks
- * Plugin URI:			https://accudio.com/development
- * Description:			Custom tweaks to Wordpress, Woocommerce and Wordpress security.
- * Version:				1.0.0
- * Author:				Alistair Shepherd — Accudio
- * Author URI:			https://accudio.com/about
- * License:				GPL-3.0+
- * License URI:			http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 // if this file is called directly, abort.
@@ -107,6 +97,9 @@ function accudio_tweaks_settings_update() {
 	if (isset($_POST['accudio_tweaks_security_csp_frame'])) {
 		update_option('accudio_tweaks_security_csp_frame', $_POST['accudio_tweaks_security_csp_frame']);
 	};
+	if (isset($_POST['accudio_tweaks_security_csp_object'])) {
+		update_option('accudio_tweaks_security_csp_object', $_POST['accudio_tweaks_security_csp_object']);
+	};
 
 	// woocommerce options
 	if (isset($_POST['accudio_tweaks_woocomm_outstock'])) {
@@ -190,6 +183,7 @@ function accudio_tweaks_settings_display() {
 	$accudio_tweaks_security_csp_font_value = stripslashes( get_option('accudio_tweaks_security_csp_font', "'self'") );
 	$accudio_tweaks_security_csp_img_value = stripslashes( get_option('accudio_tweaks_security_csp_img', "'self'") );
 	$accudio_tweaks_security_csp_frame_value = stripslashes( get_option('accudio_tweaks_security_csp_frame', "'self'") );
+	$accudio_tweaks_security_csp_object_value = stripslashes( get_option('accudio_tweaks_security_csp_object', "'none'") );
 
 	// woocommerce
 	if (get_option('accudio_tweaks_woocomm_outstock', '0') == '1') {

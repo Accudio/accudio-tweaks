@@ -2,19 +2,9 @@
 
 /**
  * @link				https://accudio.com/development
- * @since				1.0.0
+ * @since				1.1.0
  * @package				Accudio_Tweaks
  * @subpackage			Accudio_Tweaks/Settings_Display
- *
- * @wordpress-plugin
- * Plugin Name:			Accudio Tweaks
- * Plugin URI:			https://accudio.com/development
- * Description:			Custom tweaks to Wordpress, Woocommerce and Wordpress security.
- * Version:				1.0.0
- * Author:				Alistair Shepherd — Accudio
- * Author URI:			https://accudio.com/about
- * License:				GPL-3.0+
- * License URI:			http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 ?>
@@ -174,6 +164,10 @@
 							<div class="accudio_tweaks_csp">
 								<input name="accudio_tweaks_security_csp_frame" type="text" id="accudio_tweaks_security_csp_frame" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_frame_value; ?>" aria-label="Frame Content Security Policy">
 								<span class="description">Frame Policy</span>
+							</div>
+							<div class="accudio_tweaks_csp">
+								<input name="accudio_tweaks_security_csp_object" type="text" id="accudio_tweaks_security_csp_object" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_object_value; ?>" aria-label="Object Content Security Policy">
+								<span class="description">Object Policy</span>
 							</div>
 							<p class="description">(See more <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank" rel="noopener">here</a>)</p>
 						</td>
