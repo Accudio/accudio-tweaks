@@ -116,7 +116,7 @@ function accudio_tweaks_settings_update() {
 	};
 
 
-	wp_redirect(admin_url('admin.php?page=accudio-tweaks'), 303);
+	wp_redirect(admin_url('options-general.php?page=accudio-tweaks'), 303);
 }
 add_action('admin_post_accudio_tweaks_update_options', 'accudio_tweaks_settings_update');
 
