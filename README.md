@@ -56,6 +56,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v1.1.2 - Changed formatting and styling in settings page to be easier to use.
 - v1.1.1 - Restructured repo to allow easier cloning into 'wp-content/plugins/'.
 - v1.1.0 - Added CSP 'object-src' to plugin options
 - v1.0.0 - Initial public release

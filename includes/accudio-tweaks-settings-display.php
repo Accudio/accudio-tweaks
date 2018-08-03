@@ -142,32 +142,32 @@
 						</th>
 						<td>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Default Policy</span>
 								<input name="accudio_tweaks_security_csp_default" type="text" id="accudio_tweaks_security_csp_default" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_default_value; ?>" aria-label="Default Content Security Policy">
-								<span class="description">Default Policy</span>
 							</div>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Script Policy</span>
 								<input name="accudio_tweaks_security_csp_script" type="text" id="accudio_tweaks_security_csp_script" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_script_value; ?>" aria-label="Script Content Security Policy">
-								<span class="description">Script Policy</span>
 							</div>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Style Policy</span>
 								<input name="accudio_tweaks_security_csp_style" type="text" id="accudio_tweaks_security_csp_style" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_style_value; ?>" aria-label="Style Content Security Policy">
-								<span class="description">Style Policy</span>
 							</div>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Font Policy</span>
 								<input name="accudio_tweaks_security_csp_font" type="text" id="accudio_tweaks_security_csp_font" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_font_value; ?>" aria-label="Font Content Security Policy">
-								<span class="description">Font Policy</span>
 							</div>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Image Policy</span>
 								<input name="accudio_tweaks_security_csp_img" type="text" id="accudio_tweaks_security_csp_img" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_img_value; ?>" aria-label="Image Content Security Policy">
-								<span class="description">Image Policy</span>
 							</div>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Frame Policy</span>
 								<input name="accudio_tweaks_security_csp_frame" type="text" id="accudio_tweaks_security_csp_frame" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_frame_value; ?>" aria-label="Frame Content Security Policy">
-								<span class="description">Frame Policy</span>
 							</div>
 							<div class="accudio_tweaks_csp">
+                <span class="description">Object Policy</span>
 								<input name="accudio_tweaks_security_csp_object" type="text" id="accudio_tweaks_security_csp_object" class="accudio_tweaks_csp" value="<?php echo $accudio_tweaks_security_csp_object_value; ?>" aria-label="Object Content Security Policy">
-								<span class="description">Object Policy</span>
 							</div>
 							<p class="description">(See more <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank" rel="noopener">here</a>)</p>
 						</td>

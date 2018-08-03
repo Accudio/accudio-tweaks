@@ -1,14 +1,18 @@
 .accudio_tweaks_csp {
 	display: block;
+  margin-top: .1rem;
+}
+.accudio_tweaks_csp .description {
+  font-weight: 500;
 }
 .accudio_tweaks_csp input {
 	display: inline-block;
-	width: 250px;
+	width: 100%;
 }
 
 #accudio_tweaks_security_frame_whitelist {
 	display: none;
-	width: 250px;
+	width: 100%;
 }
 
 .accudio_tweaks_danger {
