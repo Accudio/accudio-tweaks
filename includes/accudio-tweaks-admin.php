@@ -2,9 +2,9 @@
 
 /**
  * @link						https://accudio.com/development
- * @since					1.0.0
+ * @since					  1.0.0
  * @package					Accudio_Tweaks
- * @subpackage				Accudio_Tweaks/WooCommerce
+ * @subpackage			Accudio_Tweaks/WooCommerce
  */
 
 // If this file is called directly, abort.
@@ -31,7 +31,7 @@ function accudio_tweaks_admin_styles() {
 	if ( current_user_can('manage_options') ) {
 		return;
 	};
-	wp_enqueue_style('style_admin' , plugin_dir_url( __FILE__ ) . 'admin.css' );
+	wp_enqueue_style('style_admin' , plugin_dir_url( __FILE__ ) . '../assets/css/admin.css' );
 }
 add_action('admin_head', 'accudio_tweaks_admin_styles');
 
@@ -84,6 +84,16 @@ function accudio_tweaks_admin_edit_link() {
 		jQuery('.wp-list-table .edit_with_elementor a').each(function(i, obj) {
 			jQuery(obj).text('Simple Edit')
 		});
+    jQuery('.wp-list-table .edit_with_elementor').each(function(i, obj) {
+      jQuery(obj).append(' | ').show();
+      jQuery(obj).prependTo(jQuery(obj).parent());
+    });
+    jQuery('.wp-list-table .view').each(function(i, obj) {
+      jQuery(obj).html(function() { 
+        return $(this).html().replace(" | ", "");
+      });
+    });
+
 	</script>
 	<?php
 }
