@@ -101,6 +101,20 @@
 							} ?>
 						</td>
 					</tr>
+          <tr>
+            <th scope="row">
+              <label for="accudio_tweaks_admin_yoast_dashboard">Remove <a href="plugin-install.php?s=Yoast+SEO&tab=search&type=term">Yoast SEO</a> widget on Dashboard</label>
+            </th>
+            <td>
+              <input id='accudio_tweaks_admin_yoast_dashboard_hidden' type='hidden' value="0" name='accudio_tweaks_admin_yoast_dashboard'>
+              <input name="accudio_tweaks_admin_yoast_dashboard" type="checkbox" id="accudio_tweaks_admin_yoast_dashboard" value="1" <?php echo $accudio_tweaks_admin_yoast_dashboard_value; ?>>
+              <?php if(accudio_tweaks_admin_yoast_is_enabled()) {
+                echo "<span class='description'>Yoast is installed and active, setting enabled.</span>";
+              } else {
+                echo "<span class='description accudio_tweaks_danger'>Yoast is not installed or inactive, setting has no affect. To download and install, click <a href='plugin-install.php?s=Yoast+SEO&tab=search&type=term'>here</a>.</p>";
+              } ?>
+            </td>
+          </tr>
 				</tbody>
 			</table>
 			<hr>

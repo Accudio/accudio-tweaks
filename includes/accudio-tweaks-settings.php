@@ -68,6 +68,9 @@ function accudio_tweaks_settings_update() {
 	if (isset($_POST['accudio_tweaks_admin_yoast_filters'])) {
 		update_option('accudio_tweaks_admin_yoast_filters', $_POST['accudio_tweaks_admin_yoast_filters']);
 	};
+  if (isset($_POST['accudio_tweaks_admin_yoast_dashboard'])) {
+    update_option('accudio_tweaks_admin_yoast_dashboard', $_POST['accudio_tweaks_admin_yoast_dashboard']);
+  };
 
 	// security options
 	if (isset($_POST['accudio_tweaks_security_https'])) {
@@ -168,6 +171,11 @@ function accudio_tweaks_settings_display() {
 	} else {
 		$accudio_tweaks_admin_yoast_filters_value = '';
 	};
+  if (get_option('accudio_tweaks_admin_yoast_dashboard', '0') == '1') {
+    $accudio_tweaks_admin_yoast_dashboard_value = ' checked';
+  } else {
+    $accudio_tweaks_admin_yoast_dashboard_value = '';
+  };
 
 	// security
 	if (get_option('accudio_tweaks_security_https', '1') == '1') {

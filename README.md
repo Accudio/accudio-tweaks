@@ -56,6 +56,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v1.1.5 - Added option to disable Yoast Dashboard widget and made column/filter settings also apply to edit posts view
 - v1.1.4 - Enhanced Elementor edit links to be easier to use
 - v1.1.3 - Fixed Redirect URL to continue displaying current page in navigation.
 - v1.1.2 - Changed formatting and styling in settings page to be easier to use.

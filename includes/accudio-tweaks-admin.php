@@ -128,6 +128,11 @@ function accudio_tweaks_admin_yoast_filters() {
 	}
 }
 
+function accudio_tweaks_admin_yoast_dashboard() {
+  global $wp_meta_boxes;
+  unset($wp_meta_boxes['dashboard']['normal']['core']['wpseo-dashboard-overview']);
+}
+
 
 /* remove Quick Edit link in page manage */
 if ( get_option('accudio_tweaks_admin_quickedit', '0') == '1' ) {
@@ -146,9 +151,10 @@ if ( get_option('accudio_tweaks_admin_trash', '0') == '1' ) {
 	add_filter('page_row_actions','accudio_tweaks_admin_trash',10,1);
 }
 
-/* remove Author and Comments columns in page manage */
+/* remove Author and Comments columns in page and post manage */
 if ( get_option('accudio_tweaks_admin_authorcomments', '0') == '1' ) {
 	add_filter( 'manage_pages_columns', 'accudio_tweaks_admin_pages_columns' );
+  add_filter( 'manage_posts_columns', 'accudio_tweaks_admin_pages_columns' );
 }
 
 /* modifying edit link with Elementor */
@@ -158,10 +164,16 @@ if ((get_option('accudio_tweaks_admin_elementor', '0') == '1') && accudio_tweaks
 
 /* remove Yoast SEO columns in page manage */
 if ((get_option('accudio_tweaks_admin_yoast_cols', '0') == '1') && accudio_tweaks_admin_yoast_is_enabled()) {
-	add_filter ( 'manage_edit-page_columns', 'accudio_tweaks_admin_yoast_cols' );
+  add_filter ( 'manage_edit-post_columns', 'accudio_tweaks_admin_yoast_cols', 10, 1 );
+	add_filter ( 'manage_edit-page_columns', 'accudio_tweaks_admin_yoast_cols', 10, 1 );
 }
 
 /* remove Yoast SEO filters */
 if ((get_option('accudio_tweaks_admin_yoast_filters', '0') == '1') && accudio_tweaks_admin_yoast_is_enabled()) {
 	add_action( 'admin_init', 'accudio_tweaks_admin_yoast_filters', 20 );
+}
+
+/* remove Yoast Dashboard widget */
+if ((get_option('accudio_tweaks_admin_yoast_dashboard', '0') == '1') && accudio_tweaks_admin_yoast_is_enabled()) {
+  add_action('wp_dashboard_setup', 'accudio_tweaks_admin_yoast_dashboard', 999);
 }
