@@ -9,7 +9,7 @@
  * Plugin Name:     Accudio Tweaks
  * Plugin URI:      https://accudio.com/development
  * Description:     Custom tweaks to Wordpress, Woocommerce and Wordpress security.
- * Version:         1.1.5
+ * Version:         2.0.0
  * Author:          Alistair Shepherd — Accudio
  * Author URI:      https://accudio.com/about
  * License:         GPL-3.0+
@@ -26,3 +26,21 @@ include_once plugin_dir_path( __FILE__ ) . 'includes/accudio-tweaks-security.php
 include_once plugin_dir_path( __FILE__ ) . 'includes/accudio-tweaks-woocommerce.php';
 
 include_once plugin_dir_path( __FILE__ ) . 'includes/accudio-tweaks-settings.php';
+
+
+// plugin activation and acf dependency check
+if(!function_exists('accudio_tweaks_install')) {
+  function accudio_tweaks_install() {
+    // check if acf pro or free is active
+    if(!(in_array('advanced-custom-fields/acf.php', apply_filters('active_plugins', get_option( 'active_plugins' ))) || in_array('advanced-custom-fields-pro/acf.php', apply_filters('active_plugins', get_option( 'active_plugins' ))))) {
+      
+      // deactivate the plugin
+      deactivate_plugins(__FILE__);
+      
+      // throw error
+      $error_message = sprintf(__('This plugin requires <a href="%s" target="_parent">Advanced Custom Fields</a> installed and active.', 'accudio-tweaks'), 'plugin-install.php?s=advanced+custom+fields&tab=search&type=term');
+      die($error_message);
+    }
+  }
+}
+register_activation_hook( __FILE__, 'accudio_tweaks_install' );

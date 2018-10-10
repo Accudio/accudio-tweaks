@@ -1,50 +1,108 @@
 <?php
 
 /**
- * @link				https://accudio.com/development
- * @since				1.1.0
- * @package				Accudio_Tweaks
- * @subpackage			Accudio_Tweaks/Security
+ * @link        https://accudio.com/development
+ * @since       2.0.0
+ * @package     Accudio_Tweaks
+ * @subpackage  Accudio_Tweaks/Security
  */
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+  exit;
 }
 
+// security mods
+if(!function_exists('accudio_tweaks_security')):
+  add_action( 'plugins_loaded', 'accudio_tweaks_security' );
+  function accudio_tweaks_security() {
+    if(function_exists('get_field')) {
+      add_action('send_headers', 'accudio_tweaks_security_init');
+      function accudio_tweaks_security_init() {
+        $options = get_field('accudio_tweaks_security', 'options');
+        /* ~~~~~ VARIABLE ~~~~~ */
 
-function accudio_tweaks_security_init(){
-	/* ~~~~~ VARIABLE ~~~~~ */
+        // enforce the use of HTTPS
+        if($options['enforce_https']) {
+          header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
+        }
 
-	// Enforce the use of HTTPS
-	if (get_option('accudio_tweaks_security_https', '1') == '1') {
-		header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
-	}
+        // referrer policy
+        if(!empty($options['referrer_policy'])) {
+          header('Referrer-Policy: '.$options['referrer_policy']);
+        }
 
-	// Prevent Clickjacking
-	if (get_option('accudio_tweaks_security_frame', 'SAMEORIGIN') == 'ALLOW-FROM') {
-		$x_frame_options = get_option('accudio_tweaks_security_frame', 'SAMEORIGIN').' '.get_option('accudio_tweaks_security_frame_whitelist', '');
-	} else {
-		$x_frame_options = get_option('accudio_tweaks_security_frame', 'SAMEORIGIN');
-	}
-	header('X-Frame-Options: '.$x_frame_options);
+        // set x-frame-options
+        if(!empty($options['frame_options']['select'])) {
+          $x_frame_options = $options['frame_options']['select'];
+          if($x_frame_options == 'ALLOW-FROM') {
+            foreach($options['frame_options']['whitelist'] as $source) {
+              $x_frame_options .= ' '.$source['condition'];
+            }
+          }
+          header('X-Frame-Options: '.$x_frame_options);
+        }
 
-	// Prevent XSS Attack
-	$content_security_policy = 'default-src '.stripslashes( get_option('accudio_tweaks_security_csp_default', "'self'") ).'; script-src '.stripslashes( get_option('accudio_tweaks_security_csp_script', "'self' 'unsafe-inline'") ).'; style-src '.stripslashes( get_option('accudio_tweaks_security_csp_style', "'self' 'unsafe-inline'") ).'; font-src '.stripslashes( get_option('accudio_tweaks_security_csp_font', "'self'") ).'; img-src '.stripslashes( get_option('accudio_tweaks_security_csp_img', "'self'") ).'; frame-src '.stripslashes( get_option('accudio_tweaks_security_csp_frame', "'self'") ).'; object-src '.stripslashes( get_option('accudio_tweaks_security_csp_object', "'none'") ).';';
-	header('Content-Security-Policy: '.$content_security_policy); // FF Chrome Safari Opera
-	header('X-Content-Security-Policy: '.$content_security_policy); // IE
+        // content security policy
+        $content_security_policy = '';
+        if(!empty($options['csp']['primary_policy'])) {
+          $content_security_policy .= 'default-src';
+          foreach($options['csp']['primary_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($options['csp']['script_policy'])) {
+          $content_security_policy .= 'script-src';
+          foreach($options['csp']['script_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($options['csp']['style_policy'])) {
+          $content_security_policy .= 'style-src';
+          foreach($options['csp']['style_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($options['csp']['font_policy'])) {
+          $content_security_policy .= 'font-src';
+          foreach($options['csp']['font_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($options['csp']['image_policy'])) {
+          $content_security_policy .= 'img-src';
+          foreach($options['csp']['image_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($options['csp']['frame_policy'])) {
+          $content_security_policy .= 'frame-src';
+          foreach($options['csp']['frame_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($options['csp']['object_policy'])) {
+          $content_security_policy .= 'object-src';
+          foreach($options['csp']['object_policy'] as $source) {
+            $content_security_policy .= ' '.stripslashes($source['source']);
+          }
+          $content_security_policy .= '; ';
+        }
+        if(!empty($content_security_policy)) {
+          header('Content-Security-Policy: '.$content_security_policy); // FF Chrome Safari Opera
+          header('X-Content-Security-Policy: '.$content_security_policy); // IE
+        }
 
-
-	/* ~~~~~ STATIC ~~~~~ */
-
-	// Block Access If XSS Attack Is Suspected
-	header("X-XSS-Protection: 1; mode=block");
-
-	// Prevent MIME-Type Sniffing
-	header("X-Content-Type-Options: nosniff");
-
-	// Referrer Policy
-	header("Referrer-Policy: no-referrer-when-downgrade");
-}
-
-add_action('send_headers', 'accudio_tweaks_security_init', 1);
+        /* ~~~~~ STATIC ~~~~~ */
+        header("X-XSS-Protection: 1; mode=block"); // Block Access If XSS Attack Is Suspected
+        header("X-Content-Type-Options: nosniff"); // Prevent MIME-Type Sniffing
+      }
+    }
+  }
+endif;
