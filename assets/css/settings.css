@@ -1,20 +1,25 @@
-.accudio_tweaks_csp {
-	display: block;
-  margin-top: .1rem;
+.acf-field.fill, .acf-field.expand>.acf-input>.acf-fields>.acf-field, .acf-field.check-table {
+  padding: 0;
 }
-.accudio_tweaks_csp .description {
-  font-weight: 500;
+.acf-field.fill>.acf-input>.acf-fields, .acf-field.expand>.acf-input>.acf-fields, .acf-field.expand>.acf-input>.acf-fields>div, .acf-field.check-table>.acf-input>.acf-fields, .acf-field.check-table>.acf-input>.acf-fields>.acf-field {
+  border: 0;
 }
-.accudio_tweaks_csp input {
-	display: inline-block;
-	width: 100%;
+.acf-field.expand>.acf-input>.acf-fields>.acf-field:last-child {
+  margin-top: .5rem;
 }
-
-#accudio_tweaks_security_frame_whitelist {
-	display: none;
-	width: 100%;
+.acf-field.check-table>.acf-label {
+  padding: 15px 12px 0;
 }
-
-.accudio_tweaks_danger {
-	color: #f33 !important;
+.acf-field.check-table>.acf-label>.description {
+  color: #f33 !important;
+}
+.acf-field.check-table>.acf-label>.description a {
+  color: #f33 !important;
+  font-weight: bold;
+}
+.acf-field.check-table>.acf-input>.acf-fields>.acf-field>div {
+  width: 50%;
+}
+.acf-field.check-table>.acf-input>.acf-fields>.acf-field:before {
+  content: none;
 }

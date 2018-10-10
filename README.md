@@ -23,13 +23,13 @@ For all requests sets the headers:
 
 * 'X-XSS-Protection: 1; mode=block';
 * 'X-Content-Type-Options: nosniff';
-* 'Referrer-Policy: no-referrer-when-downgrade'
 
 Also has configurable options to:
 
 * Forcing the use of HTTPS with the 'Strict-Transport-Security' header;
 * Configurable Frame options with header 'X-Frame-Options';
-* Content Security Options for default-src, script-src, style-src, font-src, img-src, frame-src;
+* Content Security Options for default-src, script-src, style-src, font-src, img-src, frame-src, object-src;
+* Referrer-Policy;
 
 ### WooCommerce
 
@@ -42,7 +42,7 @@ If [WooCommerce][woocommerceurl] is enabled:
 
 ## Requirements
 
-A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin has been tested with Version 4.9.4 but should work on many versions. 
+A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin has been tested with Version 4.9.4 but should work on many versions. v2.0.0 and above requires the plugin [Advanced Custom Fields Pro][acfurl], in order to simplify development. As this is a common plugin for Wordpress Professionals, this is believed to be a satisfactory compromise.
 
 ## Installation
 
@@ -56,6 +56,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v2.0.0 - Changed plugin to be dependent on Advanced Custom Fields for settings page
 - v1.1.5 - Added option to disable Yoast Dashboard widget and made column/filter settings also apply to edit posts view
 - v1.1.4 - Enhanced Elementor edit links to be easier to use
 - v1.1.3 - Fixed Redirect URL to continue displaying current page in navigation.
@@ -73,5 +74,6 @@ Copyright &copy; 2018 [Alistair Shepherd][accudiourl]. Licensed under the [GPLv3
 [woocommerceurl]:https://woocommerce.com/
 [elementorurl]:https://elementor.com/
 [yoastseourl]:https://yoast.com/wordpress/plugins/seo/
+[acfurl]:https://www.advancedcustomfields.com/
 [accudiourl]:https://accudio.com
 [licenseurl]:https://www.gnu.org/licenses/gpl-3.0.txt
