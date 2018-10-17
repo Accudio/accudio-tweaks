@@ -220,7 +220,7 @@ if(!function_exists('accudio_tweaks_settings_options')):
               'ui_off_text' => '',
             ),
             array(
-              'key' => 'field_5bbe1bc979b88',
+              'key' => 'field_5bc7531a38bd5',
               'label' => 'Lower Yoast SEO metabox to bottom of edit page',
               'name' => 'yoast_metabox',
               'type' => 'true_false',
@@ -980,5 +980,6 @@ if(!function_exists('accudio_tweaks_settings_options')):
     ));
 
     endif;
+    
   }
 endif;
