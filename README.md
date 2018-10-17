@@ -15,7 +15,7 @@ All options can be enabled or disabled for users without the manage_options perm
 * Remove 'Trash' option in post and page manager.
 * Hide Author and Comment columns in post and page manager.
 * Change 'Edit' link and title in page and post manager to instead edit the post with [Elementor Page Builder][elementorurl].
-* Hide [Yoast SEO][yoastseourl] Columns and Filters
+* Hide [Yoast SEO][yoastseourl] Columns, Filters, Dashboard Widget and lower metabox priority
 
 ### Security
 
@@ -56,6 +56,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v2.0.1 - Added option to lower Yoast SEO metabox priority
 - v2.0.0 - Changed plugin to be dependent on Advanced Custom Fields for settings page
 - v1.1.5 - Added option to disable Yoast Dashboard widget and made column/filter settings also apply to edit posts view
 - v1.1.4 - Enhanced Elementor edit links to be easier to use
