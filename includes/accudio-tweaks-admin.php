@@ -185,6 +185,16 @@ if(!function_exists('accudio_tweaks_admin')):
         }
       endif;
 
+      // lower Yoast SEO metabox priority
+      if(!function_exists('accudio_tweaks_admin_yoast_metabox')) :
+        if($options['yoast_metabox'] && accudio_tweaks_admin_yoast_is_enabled()) {
+          add_filter('wpseo_metabox_prio', 'accudio_tweaks_admin_yoast_metabox');
+        }
+        function accudio_tweaks_admin_yoast_metabox() {
+          return 'low';
+        }
+      endif;
+
 
     }
   }
