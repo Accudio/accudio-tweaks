@@ -243,7 +243,7 @@ if(!function_exists('accudio_tweaks_settings_options')):
               'label' => 'Add WordPress GDPR Capabilities to User Role Editor',
               'name' => 'ure_gdpr_caps',
               'type' => 'true_false',
-              'instructions' => '',
+              'instructions' => '<a href="https://role-editor.com/" target="_blank" rel="noopener noreferrer">User Role Editor</a> is required for this setting to have any effect.',
               'required' => 0,
               'conditional_logic' => 0,
               'wrapper' => array(
