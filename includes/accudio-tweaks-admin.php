@@ -40,6 +40,16 @@ if(!function_exists('accudio_tweaks_admin')):
       endif;
 
 
+      // returns true if user role editor is enabled
+      if(!function_exists('accudio_tweaks_admin_ure_is_enabled')) :
+        function accudio_tweaks_admin_ure_is_enabled() {
+          if(in_array('user-role-editor/user-role-editor.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+            return true;
+          }
+        }
+      endif;
+
+
       // remove Quick Edit link in page manage
       if(!function_exists('accudio_tweaks_admin_quickedit')) :
         if($options['quickedit']) {
@@ -195,6 +205,53 @@ if(!function_exists('accudio_tweaks_admin')):
         }
       endif;
 
+      // add WordPress GDPR caps to User Role Editor
+      if(!function_exists('accudio_tweaks_admin_gdpr_group_caps')) :
+        if($options['ure_gdpr_caps'] && accudio_tweaks_admin_ure_is_enabled()) {
+          add_filter('ure_built_in_wp_caps', 'accudio_tweaks_admin_gdpr_group_caps', 10, 1);
+        }
+        function accudio_tweaks_admin_gdpr_group_caps($caps) {
+          $caps['manage_privacy_options'] = array('core', 'general');
+          $caps['export_others_personal_data'] = array('core', 'general');
+          $caps['erase_others_personal_data'] = array('core', 'general');
+          $admin_role = get_role('administrator');    
+          if (isset($admin_role->capabilities['manage_privacy_options'])) {
+            return $caps;        
+          }
+          // add privacy caps to 'administrator' role
+          $roles = wp_roles();
+          $old_use_db = $roles->use_db;
+          $roles->use_db = true;
+          $admin_role = get_role('administrator');
+          $admin_role->add_cap('manage_privacy_options', true);
+          $admin_role->add_cap('export_others_personal_data', true);
+          $admin_role->add_cap('erase_others_personal_data', true);
+          $roles->use_db = $old_use_db;            
+          return $caps;
+        }
+      endif;
+
+      // map WordPress GDPR caps to assignable capabilities
+      if(!function_exists('accudio_tweaks_admin_gdpr_map_caps')) :
+        if($options['ure_gdpr_caps'] && accudio_tweaks_admin_ure_is_enabled()) {
+          add_filter('map_meta_cap', 'accudio_tweaks_admin_gdpr_map_caps', 10, 2);
+        }
+        function accudio_tweaks_admin_gdpr_map_caps($caps, $cap) {
+          $privacy_caps = array('manage_privacy_options', 'export_others_personal_data', 'erase_others_personal_data');
+          if (!in_array($cap, $privacy_caps)) {
+            return $caps;
+          }
+          $default_cap = is_multisite() ? 'manage_network' : 'manage_options';        
+          foreach ($caps as $key => $value) {
+            if ($value == $default_cap) {
+              unset($caps[$key]);
+              break;
+            }
+          }
+          $caps[] = $cap;
+          return $caps;
+        }
+      endif;
 
     }
   }

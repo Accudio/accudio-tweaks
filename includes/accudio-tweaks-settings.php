@@ -238,6 +238,25 @@ if(!function_exists('accudio_tweaks_settings_options')):
               'ui_on_text' => '',
               'ui_off_text' => '',
             ),
+            array(
+              'key' => 'field_5c64936a1b6ca',
+              'label' => 'Add WordPress GDPR Capabilities to User Role Editor',
+              'name' => 'ure_gdpr_caps',
+              'type' => 'true_false',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'message' => '',
+              'default_value' => 0,
+              'ui' => 0,
+              'ui_on_text' => '',
+              'ui_off_text' => '',
+            ),
           ),
         ),
       ),
@@ -256,7 +275,7 @@ if(!function_exists('accudio_tweaks_settings_options')):
       'label_placement' => 'top',
       'instruction_placement' => 'label',
       'hide_on_screen' => '',
-      'active' => 1,
+      'active' => true,
       'description' => '',
     ));
 
@@ -858,7 +877,7 @@ if(!function_exists('accudio_tweaks_settings_options')):
       'label_placement' => 'top',
       'instruction_placement' => 'label',
       'hide_on_screen' => '',
-      'active' => 1,
+      'active' => true,
       'description' => '',
     ));
 
@@ -975,7 +994,7 @@ if(!function_exists('accudio_tweaks_settings_options')):
       'label_placement' => 'top',
       'instruction_placement' => 'label',
       'hide_on_screen' => '',
-      'active' => 1,
+      'active' => true,
       'description' => '',
     ));
 
