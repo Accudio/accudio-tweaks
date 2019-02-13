@@ -9,7 +9,7 @@
  * Plugin Name:       Accudio Tweaks
  * Plugin URI:        https://accudio.com/development
  * Description:       Custom tweaks to Wordpress, Woocommerce and Wordpress security.
- * Version:           2.1.0
+ * Version:           2.1.1
  * Author:            Alistair Shepherd — Accudio
  * Author URI:        https://accudio.com/about
  * License:           GPL-3.0+

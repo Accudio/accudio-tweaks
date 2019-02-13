@@ -57,6 +57,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v2.1.1 - Fixed new option not using ACF stylised UI
 - v2.1.0 - Added option to add WordPress GDPR capabilities to User Role Editor
 - v2.0.1 - Added option to lower Yoast SEO metabox priority
 - v2.0.0 - Changed plugin to be dependent on Advanced Custom Fields for settings page
