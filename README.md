@@ -16,6 +16,7 @@ All options can be enabled or disabled for users without the manage_options perm
 * Hide Author and Comment columns in post and page manager.
 * Change 'Edit' link and title in page and post manager to instead edit the post with [Elementor Page Builder][elementorurl].
 * Hide [Yoast SEO][yoastseourl] Columns, Filters, Dashboard Widget and lower metabox priority
+* Add [WordPress GDPR capabilities](https://wordpress.org/news/2018/04/gdpr-compliance-tools-in-wordpress/) to [User Role Editor][ureurl].
 
 ### Security
 
@@ -56,6 +57,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v2.1.0 - Added option to add WordPress GDPR capabilities to User Role Editor
 - v2.0.1 - Added option to lower Yoast SEO metabox priority
 - v2.0.0 - Changed plugin to be dependent on Advanced Custom Fields for settings page
 - v1.1.5 - Added option to disable Yoast Dashboard widget and made column/filter settings also apply to edit posts view
@@ -75,6 +77,7 @@ Copyright &copy; 2018 [Alistair Shepherd][accudiourl]. Licensed under the [GPLv3
 [woocommerceurl]:https://woocommerce.com/
 [elementorurl]:https://elementor.com/
 [yoastseourl]:https://yoast.com/wordpress/plugins/seo/
+[ureurl]:https://www.role-editor.com/
 [acfurl]:https://www.advancedcustomfields.com/
 [accudiourl]:https://accudio.com
 [licenseurl]:https://www.gnu.org/licenses/gpl-3.0.txt
