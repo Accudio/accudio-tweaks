@@ -253,7 +253,7 @@ if(!function_exists('accudio_tweaks_settings_options')):
               ),
               'message' => '',
               'default_value' => 0,
-              'ui' => 0,
+              'ui' => 1,
               'ui_on_text' => '',
               'ui_off_text' => '',
             ),
