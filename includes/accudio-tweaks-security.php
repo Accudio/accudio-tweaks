@@ -104,5 +104,54 @@ if(!function_exists('accudio_tweaks_security')):
         header("X-Content-Type-Options: nosniff"); // Prevent MIME-Type Sniffing
       }
     }
+
+    // disable XMLRPC
+    add_filter('xmlrpc_enabled', '__return_false');
+
+    // disable user REST endpoints
+    if(!function_exists('accudio_tweaks_security_rest')) {
+      add_filter( 'rest_endpoints', 'accudio_tweaks_security_rest');
+      function accudio_tweaks_security_rest($endpoints) {
+        if ( isset( $endpoints['/wp/v2/users'] ) ) {
+          unset( $endpoints['/wp/v2/users'] );
+        }
+        if ( isset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] ) ) {
+          unset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
+        }
+        return $endpoints;
+      }
+    }
+
+    // remove WordPress version from generator meta
+    add_filter('the_generator', '__return_empty_string');
+
+    // reverse query param for assets using WordPress version. Basic but covers automated checking
+    if(!function_exists('accudio_tweaks_security_asset_ver')) {
+      add_filter( 'style_loader_src', 'accudio_tweaks_security_asset_ver');
+      add_filter( 'script_loader_src', 'accudio_tweaks_security_asset_ver');
+      function accudio_tweaks_security_asset_ver($src) {
+        if (strpos($src, 'ver=' . get_bloginfo('version'))) {
+          $src_array = parse_url($src);
+          parse_str($src_array['query'], $query_array);
+          if(!empty($query_array['ver'])){
+            $query_array['ver'] = strrev($query_array['ver']);
+          }
+          $src = $src_array['scheme'] . '://' . $src_array['host'] . '/' . $src_array['path'] . '?' . http_build_query($query_array);
+        }
+
+        return $src;
+      }
+    }
+
+    // replace login error messages
+    if ( ! function_exists( 'accudio_tweaks_login_error_message' ) ) {
+      add_filter( 'login_errors', 'accudio_tweaks_login_error_message' );
+      function accudio_tweaks_login_error_message($error) {
+        if(strpos($error, 'password you entered for the username') !== false || strpos($error, 'Invalid username') !== false) {
+          $error = '<strong>ERROR</strong>: Username or Password is incorrect. <a href="' . wp_lostpassword_url() . '">Lost your password?</a>';
+        }
+        return $error;
+      }
+    }
   }
 endif;

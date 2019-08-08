@@ -32,6 +32,14 @@ Also has configurable options to:
 * Content Security Options for default-src, script-src, style-src, font-src, img-src, frame-src, object-src;
 * Referrer-Policy;
 
+Also included and always-on are some general WordPress hardening methods:
+
+* Disable XMLRPC - Useful in too few instances and a major attack point;
+* Disable user REST endpoints
+* Remove WordPress version from generator meta
+* Reverse query string for default assets, a less common but less often removed method for finding the WordPress version
+* Replace login errors to not provide information on valid usernames.
+
 ### WooCommerce
 
 If [WooCommerce][woocommerceurl] is enabled:
@@ -57,6 +65,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## Version History
 
+- v2.2.0 - Added a few WordPress hardening methods, thanks to Derek from The Covey Agency for suggestions
 - v2.1.1 - Fixed new option not using ACF stylised UI
 - v2.1.0 - Added option to add WordPress GDPR capabilities to User Role Editor
 - v2.0.1 - Added option to lower Yoast SEO metabox priority
@@ -71,7 +80,7 @@ A working installation of [Wordpress][wordpressdownurl], v1.0.0 of the plugin ha
 
 ## License
 
-Copyright &copy; 2018 [Alistair Shepherd][accudiourl]. Licensed under the [GPLv3 License][licenseurl].
+Copyright &copy; 2019 [Alistair Shepherd][accudiourl]. Licensed under the [GPLv3 License][licenseurl].
 
 [wordpressurl]:https://wordpress.org/
 [wordpressdownurl]:https://wordpress.org/download/
